@@ -1,11 +1,12 @@
 version: "{build}"
 image: 
-  - Visual Studio 2017
   - Visual Studio 2015
-  - Visual Studio 2013
+
+artifacts:
+  - path: "*.zip"
+    type: zip
 
 deploy:
-  release: angle-v$(appveyor_build_version)
   description: ""
   provider: GitHub
   auth_token:
