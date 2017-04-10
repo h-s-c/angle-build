@@ -1,22 +1,7 @@
-#!/bin/bash
-
-command_exists () {
-    type "$1" &> /dev/null ;
-}
-
-if command_exists virtualenv2 ; then
-    virtualenv2 python2
-else
-    virtualenv python2
-fi
-
-source python2/bin/activate
-python --version
-
-git submodule update --init --recursive
+#!/bin/sh
 export PATH=${PWD}/depot_tools:$PATH
-
 export GYP_GENERATORS=ninja
+
 cd angle
 python scripts/bootstrap.py
 gclient sync
@@ -35,3 +20,4 @@ cp -rf angle/include/GLES3/* include/GLES3
 mkdir -p lib
 cp -f angle/out/Release/lib/libEGL.so lib
 cp -f angle/out/Release/lib/libGLESv2.so lib
+ls lib
