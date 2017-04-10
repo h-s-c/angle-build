@@ -1,8 +1,5 @@
 set PATH=%PATH%;%CD%\depot_tools
 set GYP_GENERATORS=msvs
-if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2017" (set GYP_MSVS_VERSION=2017)
-if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" (set GYP_MSVS_VERSION=2015)
-if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2013" (set GYP_MSVS_VERSION=2013)
 
 cd angle
 python scripts/bootstrap.py
