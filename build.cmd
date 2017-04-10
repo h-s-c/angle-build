@@ -6,6 +6,8 @@ cd angle
 python scripts/bootstrap.py
 call gclient sync
 ninja -C out\Release
+dir out\Release
+dir out\Release\lib
 cd ..
 
 xcopy /E /I angle\include\EGL include\EGL
@@ -15,8 +17,8 @@ xcopy /E /I angle\include\GLES3 include\GLES3
 
 if exist lib rd /s /q lib
 mkdir lib
-copy angle\out\Release\lib\libEGL.lib lib\libEGL.lib
-copy angle\out\Release\lib\libGLESv2.lib lib\libGLESv2.lib
+copy angle\out\Release\libEGL.lib lib\libEGL.lib
+copy angle\out\Release\libGLESv2.lib lib\libGLESv2.lib
 copy angle\out\Release\libEGL.dll lib\libEGL.dll
 copy angle\out\Release\libGLESv2.dll lib\libGLESv2.dll
 copy angle\out\Release\d3dcompiler_47.dll lib\d3dcompiler_47.dll
