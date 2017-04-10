@@ -1,7 +1,20 @@
 version: "{build}"
 image: 
+  - Visual Studio 2017
   - Visual Studio 2015
   - Visual Studio 2013
+
+deploy:
+  release: angle-v$(appveyor_build_version)
+  description: ""
+  provider: GitHub
+  auth_token:
+    secure: DM9JJzgwrNotjHcIhoFZ2TY+jBmFsJD94et0VtylxHmTp+tJkrk4bL78rHTqhfB6
+  artifact: "*.zip"
+  draft: false
+  prerelease: false
+  on:
+    appveyor_repo_tag: true
 
 build_script: 
   - git submodule update --init --recursive
@@ -12,3 +25,4 @@ build_script:
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2015" (set GYP_MSVS_VERSION=2015)
   - if "%APPVEYOR_BUILD_WORKER_IMAGE%" == "Visual Studio 2013" (set GYP_MSVS_VERSION=2013)
   - call build.cmd
+  - 7z a angle_vc%GYP_MSVS_VERSION%_x64.zip include lib

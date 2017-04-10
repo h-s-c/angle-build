@@ -1,8 +1,18 @@
 language: c++
 os: osx
 compiler: clang
-osx_image: xcode8.3
+osx_image: xcode6.4
+
+deploy:
+  provider: releases
+  api_key: 
+    secure: "tkxl9G53Uj0qwb4QyoC9gPaBHSDZb0te3Z7BOxghvpaATxuCHbtvnTEi0rLaLArlz+oQ/Gu/IFOAwtAgHlCSvdfZMG7um4kaJELFgmuAYOlDm3dhF5ca09Vgztgfv80U+pr1/fQncvOTNKDpOVEAK1VLtiF83JrMS/s6lNR3yVISogE2/S9xeJNrc6kpB+4A0zCWllJ7yWMUKgEC6zRjGS1x/qUkLda6DecPdjlGFUr56oMaDCz1NsD1S1JQzr3gMlCee66ASJ5pXPkdqmZ3xSVm6GuGhIgBm7RHZLyvNoRi0Wrrf/zh1jhBlOM2Y66Q9NVH1mFpyq9rgFRIS1tUMWHx9aQBiHzfLznGKa25pgk2dcr3lJfy3VHDhf6bOYB5eXdIeCyqlWct4N10sIRwKZaEhGBjWcj3XHLL3Ic1d53wrzPDTKqJdXCN1Skm3xro8uB7+EHv6iYrIHg/i+7epj6W2OxDlmC7qSq50QUzUsmTtx7T8tRnjjWmqEjhJqDEXXAMzT7BTftNFMT82oA51hMSJbf5uVpCeh0CdaJk2bD45EzpR8NIgScOdKovcHeHiKiJc4Vx7LczZfNoLXgDWwrwD6v7jSpvV3d/JoonGNZFoueKUeSnJ5dD14DiVPmWjoienDcHP8XZSDIyX7v2ELLisIjgj91sESKramzHSTA="
+  file: "*.zip"
+  skip_cleanup: true
+  on:
+    tags: true
 
 script: 
   - git submodule update --init --recursive
   - ./build.sh
+  - zip -r angle_macos_x64.zip include lib
