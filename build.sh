@@ -7,8 +7,6 @@ cd angle
 python scripts/bootstrap.py
 gclient sync
 ninja -C out/Release
-ls out/Release
-ls out/Release/lib
 cd ..
 
 mkdir -p include/EGL
@@ -23,6 +21,6 @@ cp -rf angle/include/GLES3/* include/GLES3
 mkdir -p lib
 cp -f angle/out/Release/lib/libEGL.so lib
 cp -f angle/out/Release/lib/libGLESv2.so lib
-cp -f angle/out/Release/lib/libEGL.dylib lib
-cp -f angle/out/Release/lib/libGLESv2.dylib lib
+cp -f angle/out/Release/libEGL.dylib lib
+cp -f angle/out/Release/libGLESv2.dylib lib
 ls lib
