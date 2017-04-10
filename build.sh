@@ -1,6 +1,7 @@
 #!/bin/sh
 export PATH=${PWD}/depot_tools:$PATH
 export GYP_GENERATORS=ninja
+export GYP_PARALLEL=1
 
 cd angle
 python scripts/bootstrap.py
