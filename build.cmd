@@ -6,6 +6,7 @@ cd angle
 python scripts/bootstrap.py
 call gclient sync
 ninja -C out\Release
+set ERROR=%errorlevel%
 cd ..
 
 xcopy /E /I angle\include\EGL include\EGL
@@ -21,3 +22,5 @@ copy angle\out\Release\libEGL.dll lib\libEGL.dll
 copy angle\out\Release\libGLESv2.dll lib\libGLESv2.dll
 copy angle\out\Release\d3dcompiler_47.dll lib\d3dcompiler_47.dll
 dir lib
+
+exit %ERROR%

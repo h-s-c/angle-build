@@ -7,6 +7,7 @@ cd angle
 python scripts/bootstrap.py
 gclient sync
 ninja -C out/Release
+ERROR=$?
 cd ..
 
 mkdir -p include/EGL
@@ -24,3 +25,5 @@ cp -f angle/out/Release/lib/libGLESv2.so lib
 cp -f angle/out/Release/libEGL.dylib lib
 cp -f angle/out/Release/libGLESv2.dylib lib
 ls lib
+
+echo $ERROR
