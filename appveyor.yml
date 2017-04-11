@@ -5,13 +5,14 @@ image:
 artifacts:
   - path: "*.zip"
     type: zip
+    name: angle
 
 deploy:
   description: ""
   provider: GitHub
   auth_token:
     secure: DM9JJzgwrNotjHcIhoFZ2TY+jBmFsJD94et0VtylxHmTp+tJkrk4bL78rHTqhfB6
-  artifact: "*.zip"
+  artifact: angle
   draft: false
   prerelease: false
   on:
