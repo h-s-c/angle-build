@@ -1,13 +1,18 @@
 #!/bin/sh
 export PATH=${PWD}/depot_tools:$PATH
-export GYP_GENERATORS=ninja
-export GYP_PARALLEL=1
+
+#ERROR=$?
+
+virtualenv --python=/usr/bin/python2 python2
+source python2/bin/activate  
 
 cd angle
 python scripts/bootstrap.py
 gclient sync
+git checkout master
+./build/install-build-deps.sh
+gn gen out/Release "--args=is_debug=false target_cpu=\"x64\" is_clang=false use_sysroot=false"
 ninja -C out/Release
-ERROR=$?
 cd ..
 
 mkdir -p include/EGL
@@ -26,4 +31,4 @@ cp -f angle/out/Release/libEGL.dylib lib
 cp -f angle/out/Release/libGLESv2.dylib lib
 ls lib
 
-echo $ERROR
+#echo $ERROR

@@ -1,10 +1,10 @@
 set PATH=%PATH%;%CD%\depot_tools
-set GYP_GENERATORS=ninja
-set GYP_PARALLEL=1
 
 cd angle
 python scripts/bootstrap.py
 call gclient sync
+git checkout master
+call gn gen out/Release
 ninja -C out\Release
 set ERROR=%errorlevel%
 cd ..
